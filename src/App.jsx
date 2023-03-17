@@ -8,21 +8,27 @@ const router = createBrowserRouter([
     errorElement: <FourOhFour></FourOhFour>,
   },
   {
-    path:'/profile',
-    element:<Profile></Profile>
+    path: '/profile',
+    element: <Profile></Profile>,
   },
   {
-    path:'/play',
-    element:<Play></Play>
+    path: '/play',
+    element: <Play></Play>,
   },
   {
-    path:'/ranks',
-    element:<Ranks></Ranks>
-  },
-  {
-    path:'/rank',
+    path: '/ranks/:userId',
     element:<Rank></Rank>
-  }
+  },
+  {
+    path: '/ranks',
+    element: <Ranks></Ranks>,
+    children: [
+      {
+        path: ':userId',
+        element: <Rank></Rank>,
+      },
+    ],
+  },
 ]);
 
 const App = () => {
